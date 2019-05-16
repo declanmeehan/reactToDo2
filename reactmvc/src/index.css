@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.listContainer {
+  cursor: pointer;
+  font-size: 2em;
+  display: block;
+  margin: auto;
+  padding: 0;
+  width: 50%;
+}
+.listCheckBox {
+
+}
+
+.listStyle {
+  cursor: pointer;
+  list-style: none;
+}
+
+.buttonStyle {
+  margin: auto;
+  width: 50%;
+  display: block;
+
+}
+
+#submitButton {
+  margin-bottom: .5em;
+}
+
+#deleteButton {
+  margin: auto;
+  positon: relative;
+}
+
+.listCheckBoxContainer {
+  position: absolute;
+  margin: auto;
+  padding: 0;
+  display: block;
+  width: 100%;
+  vertical-align: middle;
+}
