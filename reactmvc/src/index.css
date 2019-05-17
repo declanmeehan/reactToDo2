@@ -39,6 +39,7 @@ code {
 
 #submitButton {
   margin-bottom: .5em;
+  margin-top: .5em;
 }
 
 #deleteButton {
@@ -53,4 +54,8 @@ code {
   display: block;
   width: 100%;
   vertical-align: middle;
+}
+
+.txt {
+  list-style: none;
 }

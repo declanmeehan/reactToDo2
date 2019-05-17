@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.css';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
-//import List from './List'
+import List from './List'
 
 class InputForm extends React.Component 
 {
@@ -11,11 +9,21 @@ class InputForm extends React.Component
     this.state = {
       items: [],
       value: '',
-      list: ''
+      list: '',
+      checkBox: []
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+
+
       }
+  handleKeyDown(e) {
+    if (e.key === 'Enter') {
+      document.getElementById('submitButton').click();
+    }
+  }
   handleChange(e) {
     this.setState({
       value: e.target.value
@@ -23,43 +31,48 @@ class InputForm extends React.Component
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    this.state.items.push(this.state.value);
+    //e.target.value.preventDefault();
+      this.state.items.push(this.state.value)
     this.setState({ 
-    list: this.state.items.map((item) => <InputGroup className="mb-3" >
-            <InputGroup.Prepend>
-              <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-            </InputGroup.Prepend>
-            <FormControl aria-label="" value={item} />
-          </InputGroup>
-        )
-    // <li className="listStyle" key={item}><input type="checkbox" className="listCheckBox" />{item}</li>)
+      value: ''
     })
   }
+    componentDidUpdate() {
+
+    }
+    handleDelete(e) {
+      var listCheckBox = document.getElementsByClassName('listCheckBox');
+      var unchecked = [];
+      for(var i = 0; i < listCheckBox.length; i++) {
+      if(listCheckBox[i].checked === false) {
+        unchecked.push(listCheckBox[i].nextSibling.data);
+      }
+
+    } 
+      this.setState({
+        items: unchecked
+      })
+    } 
+
   render() {
     const divStyle = {
       height: '100%',
     };
     return (
       <div style={divStyle}>
-        <input type="text" value={this.state.value} onChange={this.handleChange}  />
+        <input type="text" value={this.state.value} onChange={this.handleChange} onKeyDown={this.handleKeyDown}/>
         <input type="submit" value="submit" onClick={this.handleSubmit} className="buttonStyle" id="submitButton" />
         <div className="listCheckBoxContainer">
           <ul className="listContainer">
-            {this.state.list}
+          <List listMap={this.state.items} />
           </ul>
           <div id="deleteButton">
-            <input type="submit" value="delete" className="buttonStyle"/>  
+            <input type="submit" value="delete" className="buttonStyle" onClick={this.handleDelete} id="submit" />  
           </div>
         </div>
       </div>
-
-
-      )
-
-  }
-
-  
+    )
+  }  
 } 
 
 function App() {
