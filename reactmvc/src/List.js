@@ -1,20 +1,30 @@
 import React from 'react';
-
-class List extends React.Component {
-    handleCheckBox(e) {
-  }
+import ListFormat from './ListFormat';
+//import InputGroup from 'react-bootstrap/InputGroup'
+/*class ListFormat extends React.Component {
   render() {
-    console.log(this.props);
     return(
       <div>
-        <div>
-          {/* listMap is a prop containing state.items from app.js */}
-          {this.props.listMap.map(
-          (item, index) => <li key={index} className="txt"> <input className="listCheckBox" onClick={this.handleCheckBox} type="checkbox" key={item} />{item}</li>)}
-        </div>
+        <InputGroup></InputGroup>
+        <h1> Exported ListFormat Component </h1>
       </div>
+      )
+  }
+} */
+
+
+class List extends React.Component {
+  render() {
+          /* listMap is a prop containing state.items from app.js */
+    return(
+        <div>
+          {this.props.listMap.map(
+          (item, index) => <ListFormat itemValue={item} index={index} key={index}/>
+            )}
+        </div>
       );
   }
 }
 
 export default List;
+

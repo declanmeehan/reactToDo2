@@ -7,18 +7,17 @@ class InputForm extends React.Component
   constructor(props){
     super(props)
     this.state = {
-      items: [],
+      items: ["1", "2"],
       value: '',
       list: '',
-      checkBox: []
+      completed: []
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleDelete = this.handleDelete.bind(this);
+      this.handleKeyDown = this.handleKeyDown.bind(this);
+    }
 
-
-      }
   handleKeyDown(e) {
     if (e.key === 'Enter') {
       document.getElementById('submitButton').click();
@@ -31,27 +30,20 @@ class InputForm extends React.Component
   }
 
   handleSubmit(e) {
-    //e.target.value.preventDefault();
-      this.state.items.push(this.state.value)
+    this.state.items.push(this.state.value)
     this.setState({ 
       value: ''
     })
+    console.log("uncompleted class", this.props);
   }
     componentDidUpdate() {
 
     }
     handleDelete(e) {
       var listCheckBox = document.getElementsByClassName('listCheckBox');
-      var unchecked = [];
       for(var i = 0; i < listCheckBox.length; i++) {
-      if(listCheckBox[i].checked === false) {
-        unchecked.push(listCheckBox[i].nextSibling.data);
-      }
-
+        console.log(listCheckBox[i].checked);
     } 
-      this.setState({
-        items: unchecked
-      })
     } 
 
   render() {
@@ -83,5 +75,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
